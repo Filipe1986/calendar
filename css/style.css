@@ -1,0 +1,77 @@
+body {
+    font-family: sans-serif;
+    padding: 20px;
+    background: #f9f9f9;
+}
+
+h1 {
+    color: #333;
+}
+
+.controls {
+    margin-bottom: 20px;
+}
+
+input[type="number"] {
+    padding: 5px;
+    font-size: 16px;
+    width: 100px;
+}
+
+button {
+    padding: 6px 12px;
+    font-size: 16px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.calendar {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+
+.month {
+    border: 1px solid #ccc;
+    padding: 10px;
+    background: white;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.month-name {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.weekdays, .days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.weekdays div, .days div {
+    text-align: center;
+    padding: 6px 0;
+}
+
+.weekdays {
+    font-weight: bold;
+    background: #f0f0f0;
+}
+
+.days div {
+    border: 1px solid #eee;
+    min-height: 32px;
+}
+
+.empty {
+    background: #fafafa;
+}
+
+/* Highlight Colors */
+.highlight-yellow { background-color: yellow; }
+.highlight-red { background-color: #b30000; color: white; }
+.highlight-green { background-color: #00b300; color: white; }
+.highlight-orange { background-color: orange; color: black; }
+.highlight-blue { background-color: #0055ff; color: white; }

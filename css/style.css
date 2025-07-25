@@ -64,9 +64,12 @@ input[type="number"] {
 }
 
 
-#yearInput,
 #countryInput {
     width: 60px;
+}
+
+.country-select {
+    min-width: 220px;
 }
 
 #generateBtn {

@@ -46,7 +46,26 @@ export function generateCalendar(year, containerId, holidays) {
 
 
             const highlight = getHighlightClass(fullDate, highlights );
-            if (highlight) cell.classList.add(highlight);
+             if (highlight) {
+                cell.classList.add(highlight.class);
+                 cell.addEventListener("mouseenter", () => {
+                     let tooltip = document.createElement("div");
+                     tooltip.className = "custom-tooltip";
+                     tooltip.textContent = highlight.info;
+                     document.body.appendChild(tooltip);
+                     const rect = cell.getBoundingClientRect();
+                     tooltip.style.position = "absolute";
+                     tooltip.style.left = `${rect.left + window.scrollX}px`;
+                     tooltip.style.top = `${rect.bottom + window.scrollY}px`;
+                     cell._tooltip = tooltip;
+                 });
+                 cell.addEventListener("mouseleave", () => {
+                     if (cell._tooltip) {
+                         document.body.removeChild(cell._tooltip);
+                         cell._tooltip = null;
+                     }
+                 });
+            }
             cell.textContent = String(day);
             daysGrid.appendChild(cell);
         }
@@ -58,18 +77,18 @@ export function generateCalendar(year, containerId, holidays) {
     function holidaysToHighlights(holidays) {
         const highlights = {};
         if (Array.isArray(holidays)) {
-
             holidays.forEach(holiday => {
                 const [year, month, day] = holiday.date.split("-");
                 let highlightClass = "highlight-yellow";
                 if (holiday.types.includes("Optional")) highlightClass = "highlight-green";
-                highlights[`${parseInt(day)}/${parseInt(month)}/${year}`] = highlightClass;
+                else if (holiday.counties != null) highlightClass = "highlight-orange";
+                highlights[`${parseInt(day)}/${parseInt(month)}/${year}`] = { class: highlightClass, info: holiday.localName };
             });
         }
 
         const today = new Date();
         const todayKey = `${today.getDate()}/${today.getMonth() + 1}/${today.getFullYear()}`;
-        highlights[todayKey] = "highlight-blue";
+        highlights[todayKey] = { class: "highlight-blue", info: "Today" };
 
 
         return highlights;

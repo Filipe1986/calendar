@@ -10,8 +10,11 @@ const button = document.getElementById("generateBtn");
  * - Fetches and displays holidays for a given year and country.
  */
 
+
+
 // Trigger calendar generation when the DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('yearInput').value = new Date().getFullYear();
     document.getElementById('generateBtn').click();
 });
 

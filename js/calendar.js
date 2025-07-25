@@ -47,7 +47,7 @@ export function generateCalendar(year, containerId, holidays) {
 
             const highlight = getHighlightClass(fullDate, highlights );
             if (highlight) cell.classList.add(highlight);
-            cell.textContent = day;
+            cell.textContent = String(day);
             daysGrid.appendChild(cell);
         }
 

@@ -9,7 +9,7 @@ export function getHighlightClass(fullDate) {
         "18/4": "highlight-orange"
     };
 
-    const [day, month, year] = fullDate.split("/");
+    const [day, month] = fullDate.split("/");
     const key = `${day}/${month}`;
     return highlights[key] || null;
 }

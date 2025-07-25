@@ -1,6 +1,5 @@
-import { getHolidaysByCountry } from './utils.js';
-
 import { generateCalendar } from './calendar.js';
+import {getHolidaysByCountry} from "./holidays.js";
 
 const yearInput = document.getElementById("yearInput");
 const button = document.getElementById("generateBtn");

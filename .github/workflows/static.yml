@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main  # or master, depending on your repo
+  workflow_dispatch:
+
 
 permissions:
   id-token: write

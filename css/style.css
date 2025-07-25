@@ -14,14 +14,11 @@ h1 {
     align-items: center;
 }
 
-
 input[type="number"] {
     padding: 5px;
     font-size: 16px;
     width: 100px;
 }
-
-
 
 .calendar {
     display: grid;
@@ -33,7 +30,7 @@ input[type="number"] {
     border: 1px solid #ccc;
     padding: 10px;
     background: white;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 .month-name {
@@ -48,21 +45,19 @@ input[type="number"] {
     grid-template-columns: repeat(7, 1fr);
 }
 
-.weekdays div, .days div {
-    text-align: center;
-    padding: 6px 0;
-}
-
-.weekdays {
+.weekdays div {
     font-weight: bold;
     background: #f0f0f0;
+    text-align: center;
+    padding: 6px 0;
 }
 
 .days div {
     border: 1px solid #eee;
     min-height: 32px;
+    text-align: center;
+    padding: 6px 0;
 }
-
 
 #countryInput {
     width: 60px;
@@ -81,7 +76,6 @@ input[type="number"] {
     cursor: pointer;
 }
 
-/* Highlight Colors */
 .highlight-yellow { background-color: yellow; }
 .highlight-red { background-color: #b30000; color: white; }
 .highlight-green { background-color: #00b300; color: white; }

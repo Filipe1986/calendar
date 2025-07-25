@@ -13,7 +13,7 @@ button.addEventListener("click", () => {
 });
 
 document.getElementById('getHolidayBtn').addEventListener('click', async () => {
-    const year = document.getElementById('yearInput').value;
+    const year = document.getElementById('holidayYearInput').value;
     const country = document.getElementById('countryInput').value.toUpperCase();
     const calendarDiv = document.getElementById('holiday');
     calendarDiv.textContent = 'Loading...';

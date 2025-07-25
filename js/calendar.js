@@ -36,7 +36,7 @@ export function generateCalendar(year, containerId, holidays) {
             daysGrid.appendChild(empty);
         }
 
-        var highlights = holidaysToHighlights(holidays)
+        const highlights = holidaysToHighlights(holidays);
 
 
         const daysInMonth = new Date(year, month + 1, 0).getDate();
@@ -58,14 +58,20 @@ export function generateCalendar(year, containerId, holidays) {
     function holidaysToHighlights(holidays) {
         const highlights = {};
         if (Array.isArray(holidays)) {
+
             holidays.forEach(h => {
-                const [, month, day] = h.date.split("-");
+                const [year, month, day] = h.date.split("-");
                 let highlightClass = "highlight-yellow";
-                if (h.types.includes("Optional")) highlightClass = "highlight-blue";
-                if (h.localName.toLowerCase().includes("páscoa")) highlightClass = "highlight-green";
-                highlights[`${parseInt(day)}/${parseInt(month)}`] = highlightClass;
+                if (h.types.includes("Optional")) highlightClass = "highlight-green";
+                highlights[`${parseInt(day)}/${parseInt(month)}/${year}`] = highlightClass;
             });
         }
+
+        const today = new Date();
+        const todayKey = `${today.getDate()}/${today.getMonth() + 1}/${today.getFullYear()}`;
+        highlights[todayKey] = "highlight-blue";
+
+
         return highlights;
     }
 }

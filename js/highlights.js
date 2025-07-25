@@ -1,7 +1,7 @@
 export function getHighlightClass(fullDate, highlights) {
 
     console.log(highlights)
-    const [day, month] = fullDate.split("/");
-    const key = `${day}/${month}`;
+    const [day, month, year] = fullDate.split("/");
+    const key = `${day}/${month}/${year}`;
     return highlights[key] || null;
 }

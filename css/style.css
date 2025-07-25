@@ -9,8 +9,11 @@ h1 {
 }
 
 .controls {
-    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
 }
+
 
 input[type="number"] {
     padding: 5px;
@@ -67,6 +70,20 @@ button {
 
 .empty {
     background: #fafafa;
+}
+
+#yearInput,
+#countryInput {
+    width: 60px;
+}
+
+#generateBtn {
+    padding: 6px 16px;
+    background: #1976d2;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
 /* Highlight Colors */

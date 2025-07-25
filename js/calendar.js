@@ -59,10 +59,10 @@ export function generateCalendar(year, containerId, holidays) {
         const highlights = {};
         if (Array.isArray(holidays)) {
 
-            holidays.forEach(h => {
-                const [year, month, day] = h.date.split("-");
+            holidays.forEach(holiday => {
+                const [year, month, day] = holiday.date.split("-");
                 let highlightClass = "highlight-yellow";
-                if (h.types.includes("Optional")) highlightClass = "highlight-green";
+                if (holiday.types.includes("Optional")) highlightClass = "highlight-green";
                 highlights[`${parseInt(day)}/${parseInt(month)}/${year}`] = highlightClass;
             });
         }

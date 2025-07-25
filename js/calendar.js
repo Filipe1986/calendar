@@ -1,9 +1,12 @@
 import { getMonthName, getWeekdayNames, getStartDay } from './utils.js';
 import { getHighlightClass } from './highlights.js';
 
-export function generateCalendar(year, containerId) {
+export function generateCalendar(year, containerId, holidays) {
     const calendarEl = document.getElementById(containerId);
     calendarEl.innerHTML = '';
+
+
+
 
     for (let month = 0; month < 12; month++) {
         const monthEl = document.createElement("div");
@@ -33,11 +36,16 @@ export function generateCalendar(year, containerId) {
             daysGrid.appendChild(empty);
         }
 
+        var highlights = holidaysToHighlights(holidays)
+
+
         const daysInMonth = new Date(year, month + 1, 0).getDate();
         for (let day = 1; day <= daysInMonth; day++) {
             const cell = document.createElement("div");
             const fullDate = `${day}/${month + 1}/${year}`;
-            const highlight = getHighlightClass(fullDate);
+
+
+            const highlight = getHighlightClass(fullDate, highlights );
             if (highlight) cell.classList.add(highlight);
             cell.textContent = day;
             daysGrid.appendChild(cell);
@@ -45,5 +53,19 @@ export function generateCalendar(year, containerId) {
 
         monthEl.appendChild(daysGrid);
         calendarEl.appendChild(monthEl);
+    }
+
+    function holidaysToHighlights(holidays) {
+        const highlights = {};
+        if (Array.isArray(holidays)) {
+            holidays.forEach(h => {
+                const [, month, day] = h.date.split("-");
+                let highlightClass = "highlight-yellow";
+                if (h.types.includes("Optional")) highlightClass = "highlight-blue";
+                if (h.localName.toLowerCase().includes("páscoa")) highlightClass = "highlight-green";
+                highlights[`${parseInt(day)}/${parseInt(month)}`] = highlightClass;
+            });
+        }
+        return highlights;
     }
 }
